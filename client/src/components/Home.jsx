@@ -4,7 +4,9 @@ import WalletBalance from './WalletBalance'
 import { EthContext } from '../context/EthContext';
 import Ape from '../../../smart-contract/artifacts/contracts/Ape.sol/Ape.json';
 
-const contractAddress = '0x4f227F4d9Cc393c5843D3af8Dd3e2AB6C0742868';
+const contractAddress = import.meta.env.VITE_CONTRACT_ADDRESS;
+console.log(contractAddress);
+
 
 function Home() {
 
@@ -58,7 +60,6 @@ function Home() {
             )}
           </div>
         </div>
-        
     </div>
   )
 }
@@ -95,11 +96,10 @@ function NFTImage({ tokenId, getCount, contract, signer, totalMinted }) {
     console.log(addr);
     console.log(contract);
 
-    const result = await contract.payToMint(addr, metadataURI, {
+    await contract.safeMint(addr, metadataURI, {
       value : ethers.utils.parseEther('0.05')
     });
 
-    await result.wait();
     getMintedStatus();
   };
 
