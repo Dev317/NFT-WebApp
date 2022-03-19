@@ -100,21 +100,4 @@ contract Ape is ERC721, ERC721URIStorage, Ownable, AccessControl, Pausable, ERC7
     {
         return super.supportsInterface(interfaceId);
     }
-
-    // function payToMint(
-    //     address recipient,
-    //     string memory metadataURI
-    // ) public payable returns (uint256) {
-    //     require(existingURIs[metadataURI] != 1, 'NFT already minted!');
-    //     require (msg.value >= 0.05 ether, 'Need to pay up!');
-
-    //     uint256 newItemId = _tokenCounter.current();
-    //     _tokenCounter.increment();
-    //     existingURIs[metadataURI] = 1;
-
-    //     _mint(recipient, newItemId);
-    //     _setTokenURI(newItemId, metadataURI);
-
-    //     return newItemId;
-    // }
 }
