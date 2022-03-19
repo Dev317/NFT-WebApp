@@ -29,9 +29,9 @@ task("keys", "Prints the necessary keys for deployment", async (taskArgs, hre) =
  module.exports = {
   solidity: "0.8.10",
   networks : {
-    mumbai : {
+    rinkeby : {
       url : ALCHEMY_API,
-      accounts: [ PRIVATE_KEY ]
+      accounts: [ PRIVATE_KEY ],
     }
   }
 };

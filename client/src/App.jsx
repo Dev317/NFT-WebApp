@@ -1,13 +1,12 @@
-import Install from './components/Install';
 import Home from './components/Home';
+import { EthProvider } from './context/EthContext';
 
 function App() {
-
-  if (window.ethereum) {
-    return <Home />;
-  } else {
-    return <Install />
-  }
+  return (
+    <EthProvider>
+      <Home />
+    </EthProvider>
+  );
 }
 
 export default App;
