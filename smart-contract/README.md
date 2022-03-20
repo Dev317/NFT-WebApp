@@ -5,11 +5,11 @@ This project demonstrates a Hardhat framework. It comes with a ERC721 smart cont
 Some of the basic commands include:
 
 ```shell
-npx hardhat accounts: to retrieve all test accounts
-npx hardhat compile: to compile the smart contract
-npx hardhat test: to run test cases
-npx hardhat run --network rinkeby script/deploy.js: to deploy a contract to Rinkeby network
-npx hardhat keys: to lists down private keys
+`npx hardhat accounts`: to retrieve all framework accounts
+`npx hardhat compile`: to compile the smart contract
+`npx hardhat test`: to run cases
+`npx hardhat run --network rinkeby script/deploy.js`: to deploy a contract to Rinkeby network
+`npx hardhat keys`: to lists down private keys
 ```
 
 # ERC 721 Implementation
