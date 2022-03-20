@@ -1,15 +1,21 @@
-# Basic Sample Hardhat Project
+# Hardhat Project
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts.
+This project demonstrates a Hardhat framework. It comes with a ERC721 smart contract, a test for that contract, a script that deploys that contract, and 2 examples of a task implementation, which simply lists the available accounts and lists what the private/API keys are.
 
-Try running some of the following tasks:
+Some of the basic commands include:
 
 ```shell
-npx hardhat accounts
-npx hardhat compile
-npx hardhat clean
-npx hardhat test
-npx hardhat node
-node scripts/sample-script.js
-npx hardhat help
+`npx hardhat accounts`: to retrieve all framework accounts
+`npx hardhat compile`: to compile the smart contract
+`npx hardhat test`: to run cases
+`npx hardhat run --network rinkeby script/deploy.js`: to deploy a contract to Rinkeby network
+`npx hardhat keys`: to lists down private keys
 ```
+
+# ERC 721 Implementation
+
+Please refer to these following links for documentation: <br>
+<ul>
+  <li> OpenZepplin: https://docs.openzeppelin.com/contracts/4.x/api/token/erc721
+  <li> EIP: https://eips.ethereum.org/EIPS/eip-721
+</ul>
