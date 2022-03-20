@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { ethers } from "ethers";
 import { EthContext } from "../context/EthContext";
 
-function WalletBalance() {
+const WalletBalance = () => {
   const { currentAccount, connectWallet } = useContext(EthContext);
   const [balance, setBalance] = useState();
 
@@ -34,6 +34,6 @@ function WalletBalance() {
       </div>
     </div>
   );
-}
+};
 
 export default WalletBalance;

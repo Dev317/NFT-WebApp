@@ -39,7 +39,7 @@ contract Ape is ERC721, ERC721URIStorage, Ownable, AccessControl, Pausable, ERC7
     function safeMint(address to, string memory uri) payable public onlyRole(MINTER_ROLE) 
     {
         require(existingURIs[uri] != 1, 'Ape is already minted');
-        require (msg.value != 0.05 ether, 'Insufficient amount to mint');
+        require (msg.value >= 0.05 ether, 'Insufficient amount to mint');
 
         uint256 tokenId = _tokenCounter.current();
         _tokenCounter.increment();
