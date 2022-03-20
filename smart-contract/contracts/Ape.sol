@@ -18,16 +18,10 @@ contract Ape is ERC721, ERC721URIStorage, Ownable, AccessControl, Pausable, ERC7
     bytes32 public constant ADMIN_ROLE = keccak256("ADMIN_ROLE");
 
     address public contractOwner;
-
     mapping(string => uint8) existingURIs;
 
-    function isContentOwned(string memory uri) public view returns (bool) 
-    {
-        return existingURIs[uri] == 1;
-    }
-
     // call the parent ERC721Royalty constructor
-    constructor() ERC721("Ape", "APE") 
+    constructor() ERC721("Ape", "APE")
     {
         // grant contract owner some roles: ability to pause, ability to mint, ability as an admin
         _grantRole(PAUSER_ROLE, msg.sender);
@@ -45,13 +39,19 @@ contract Ape is ERC721, ERC721URIStorage, Ownable, AccessControl, Pausable, ERC7
     function safeMint(address to, string memory uri) payable public onlyRole(MINTER_ROLE) 
     {
         require(existingURIs[uri] != 1, 'Ape is already minted');
-        require (msg.value >= 0.05 ether, 'Insufficient amount to mint');
+        require (msg.value != 0.05 ether, 'Insufficient amount to mint');
 
         uint256 tokenId = _tokenCounter.current();
         _tokenCounter.increment();
         existingURIs[uri] = 1;
         _mint(to, tokenId);
         _setTokenURI(tokenId, uri);
+    }
+
+    // check if uri is owned
+    function isContentOwned(string memory uri) public view returns (bool)
+    {
+        return existingURIs[uri] == 1;
     }
 
     // pause and unpause an NFT minting campaign
@@ -74,11 +74,12 @@ contract Ape is ERC721, ERC721URIStorage, Ownable, AccessControl, Pausable, ERC7
         super._beforeTokenTransfer(from, to, tokenId);
     }
 
+    // get how many token has been issued
     function getTokenCount() public view returns(uint256) {
         return _tokenCounter.current();
     }
 
-    // The following functions are overrides required by Solidity.
+    // the following functions are overrides required by Solidity.
     function _burn(uint256 tokenId) internal override(ERC721, ERC721URIStorage) {
         super._burn(tokenId);
     }
